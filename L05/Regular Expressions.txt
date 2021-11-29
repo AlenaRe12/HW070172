@@ -1,0 +1,43 @@
+Part I
+1. find:  \b(eat(s|en|ing|er|ery)?|ate)\b
+2. Ghaddafi find: M[aou']+m+[ea]r? [eaEA]?[lI]?[- ]?[GK][h]?[a][zd]+[h]?af+[iy]
+3. Isfahan find: [Hh]?[IEie][ṣs][bfp][aā]h[aā]n
+4. Vienna find: (\w+),      replace: \1| 
+Find:   Beč| Beç| Bech| Vidnya|
+	Bécs| Dunaj| Fienna|
+	Vedunia| Вена| Vídeň|
+	Viedeň| Viên| Виена|
+	Viena| Vienna| Vienne|
+	Βιέννη| Vieno| Viin| Vín|
+	Vínarborg| Vindobona| Vīne|
+	Viyana| Vjenë| Vjenna|
+	Vyana| Wean| Wene| Wenen|
+	Wiedeń| Wien| Wina
+
+
+
+Part II
+1.         find:  ^\t(\w+), (\w+)$             replace: \2 \1
+2. find: (\w+),          replace: \1|
+Find: Graz| Linz|
+	Salzburg| Innsbruck| Klagenfurt| Villach| Wels| Sankt Pölten|
+	Dornbirn| Wiener Neustadt| Steyr| Feldkirch| Bregenz| Leonding|
+	Klosterneuburg| Baden bei Wien| Wolfsberg| Leoben| Krems| Traun|
+	Amstetten| Lustenau| Kapfenberg| Mödling| Hallein| Kufstein|
+	Traiskirchen| Schwechat| Braunau am Inn| Stockerau| Saalfelden|
+	Ansfelden| Tulln| Hohenems| Spittal an der Drau| Telfs| Ternitz|
+	Perchtoldsdorf| Feldkirchen| Bludenz| Bad Ischl| Eisenstadt|
+	Schwaz| Hall in Tirol| Gmunden| Wörgl| Wals-Siezenheim|
+	Marchtrenk| Bruck an der Mur| Sankt Veit an der Glan|
+	Korneuburg| Neunkirchen| Hard| Vöcklabruck| Lienz| Rankweil|
+	Hollabrunn| Enns| Brunn am Gebirge| Ried im Innkreis|
+	Bad Vöslau| Waidhofen| Knittelfeld| Trofaiach| Mistelbach|
+	Zwettl| Völkermarkt| Götzis| Sankt Johann im Pongau|
+	Gänserndorf| Gerasdorf bei Wien| Ebreichsdorf| Bischofshofen|
+	Groß-Enzersdorf| Seekirchen am Wallersee| Sankt Andrä
+
+3. \b([\w ]+) \(Lower Austria\)
+\b([\w ]+) \(Salzburg\)
+
+
+
