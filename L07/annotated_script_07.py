@@ -1,0 +1,104 @@
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+import csv
+# imports csv Module to read and write tabular data in CSV format
+import json
+# imports json-module to convert the python dictionary into a json string
+
+
+def converter_tsv_to_json(file):
+# starting a new function to convert the file into json format
+    with open(file) as f1:
+# opening the cvs-file 
+        reader = csv.DictReader(f1, delimiter="\t")
+# Creates an object that operates like a regular reader but maps the 
+# information in each row to a dict whose keys are given by the optional
+# fieldnames parameter
+# delimiter specifies the character used to separate each field
+        settlements = {}
+# {} creates an empty dictionary with the name "settlements"
+        for row in reader:
+# row variable is a list that represents a row in csv
+            settlements[row["settlement_id"]] = row
+# marks "settlement_id" as the key in the settlements-dictionary
+    with open(file.replace(".csv", ".json"), "w") as f9:
+# relpaces the ".csv"-string with .json
+# f9 = Run selection or current line
+        json.dump(settlements, f9, indent=4, ensure_ascii=False)
+# json.dump converts the Python object into a json object
+# The indent parameter specifies the spaces that are used at the beginning 
+# of a line in the json-file
+# Using a ensure_ascii=False, we make sure resulting JSON store Unicode 
+# characters as-is instead of \u escape sequence
+
+
+def converter_tsv_to_yml(file):
+# new function  to convert the file into yml format
+    with open(file, "r", encoding="utf8") as f1:
+# opening the file. 
+# "r" = open a file for reading
+# utf8 encodes unicode characters. 
+        data = f1.read().strip().split("\n")
+# data = f.read() means that data now contains a string
+# strip() removes characters from both left and right based on the 
+# argument (a string specifying the set of characters to be removed)
+# split("\n") splits a string on new lines
+        header = data[0].split("\t")
+# split("\t") splits a string by tabs 
+        allData = []
+# an empty list called allData is created
+        for d in data[1:]:
+            temp = d.split("\t")
+# splitting the string by tabs
+            tempVar = [temp[0]+":"]
+            for i in range(0, len(header)):
+# using range() in combination with the length function len(), loop
+                item = "\t%s: %s" % (header[i], temp[i])
+# The %s token allows to insert (and potentially format) a string
+# changing the text into yml-format
+                tempVar.append(item)
+# append() adds the item to the existing list (temp.Var)
+            tempVarFinal = "\n".join(tempVar)
+# Joining a list together with a newline character concatenates each 
+# string in the list, separated by "\n", the end product is called 
+# tempVarFinal
+            allData.append(tempVarFinal)
+# adding the data from the list allData to the list calle tempVarFinal
+    ReallyFinalData = "\n\n".join(allData)
+# creatin a final version with seperated lines by \n
+    with open(file.replace(".csv", ".yml"), "w", encoding="utf8") as f9:
+        f9.write(ReallyFinalData)
+# change the name of the final version into an .yml-file
+
+
+def converter_tsv_to_xml(file):
+# # new function  to convert the file into xml format
+    with open(file) as f1:
+        reader = csv.DictReader(f1, delimiter="\t")
+        # Creates an object that operates like a regular reader but maps the 
+# information in each row to a dict whose keys are given by the optional
+# fieldnames parameter
+# delimiter specifies the character used to separate each field
+        data = []
+# an empty list called data is created
+        for row in reader:
+            temp = []
+# for each row a new list called temp is created
+            for k, v in row.items():
+# iterating through the keys ans values in temp
+                temp.append("<%s>%s</%s>" % (k, v, k))
+            tempComplete = "<settlement>\n\t%s\n</settlement>" % "\n\t".join(
+                temp)
+# changing the data from temp into xml-format
+            data.append(tempComplete)
+# performing this with all the data
+    ReallyFinalData = "\n\n".join(data)
+    with open(file.replace(".csv", ".xml"), "w", encoding="utf8") as f9:
+        f9.write(ReallyFinalData)
+# change the files name ending into .xml
+
+
+converter_tsv_to_json("settlements.csv")
+converter_tsv_to_yml("settlements.csv")
+converter_tsv_to_xml("settlements.csv")
+# converting the tsv into the new formats
