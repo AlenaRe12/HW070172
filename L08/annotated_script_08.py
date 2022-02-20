@@ -14,6 +14,7 @@ for f in lof:
         # checks whether string starts with dltext
         newF = f.split(":")[-1] + ".yml"  # in fact, yml-like
         # splits strings at ":"
+        #collect and count all XML tags
 
         issueVar = []
         with open(source + f, "r", encoding="utf8") as f1:
